@@ -12,6 +12,8 @@ const ShowCase = (props) => {
         try {
             await axios.post(`http://localhost:3306/drugs/${id}`);
             fetchData();
+            const price = await axios.get(`http://localhost:3306/drugs/${id}`);
+            props.onUpdateTotal(price.data[0].price);
         } catch (error) {
             console.error('Error updating favorite:', error);
         }

@@ -6,13 +6,13 @@ import UserInfo from './UserInfo/UserInfo';
 import styles from './ShoppingCart.module.sass';
 import { useState } from 'react';
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
     const [userInfo, setUserInfo] = useState({
         name: '',
         email: '',
         phone: '',
         address: '',
-        total: 0,
+        total: props.total,
     });
 
     const onGetInfo = () => {
@@ -37,6 +37,7 @@ const ShoppingCart = () => {
                 />
                 <FavCosts />
             </div>
+            <h2>TOTAL: {userInfo.total}</h2>
             <button
                 onClick={() => onGetInfo()}
                 className={styles.btn}>

@@ -2,12 +2,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Navigation from '../navigation/Navigation';
 import Shops from './Shops/Shops';
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Shop.module.sass';
 import ShowCase from './ShowCase/ShowCase';
 
 const Shop = (props) => {
+    const [total, setTotal] = useState(0);
+
+    const handleUpdateTotal = (price) => {
+        setTotal((prevTotal) => prevTotal + price);
+    };
+
+    useEffect(() => {
+        props.onUpdateTotal(total);
+    }, [total]);
+
     return (
         <>
             <Navigation />
@@ -19,7 +29,10 @@ const Shop = (props) => {
                     />
                 </nav>
                 <main>
-                    <ShowCase selectedShop={props.selectedShop} />
+                    <ShowCase
+                        selectedShop={props.selectedShop}
+                        onUpdateTotal={handleUpdateTotal}
+                    />
                 </main>
             </div>
         </>

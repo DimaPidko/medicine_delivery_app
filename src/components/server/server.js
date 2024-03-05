@@ -75,6 +75,34 @@ app.get('/drugs', (req, res) => {
     });
 });
 
+app.get('/drugs/:id', (req, res) => {
+    const drugId = req.params.id;
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        } else {
+            connection.query(
+                'SELECT * FROM drugs WHERE id = ?',
+                [drugId],
+                (err, rows) => {
+                    connection.release();
+
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Internal Server Error');
+                        return;
+                    }
+
+                    console.log('Success', rows);
+                    res.send(rows);
+                }
+            );
+        }
+    });
+});
+
 app.post('/drugs/:id', (req, res) => {
     const drugId = req.params.id;
 
