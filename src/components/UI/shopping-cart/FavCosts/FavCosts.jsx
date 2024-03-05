@@ -6,6 +6,7 @@ import styles from './FavCosts.module.sass';
 
 const FavCosts = () => {
     const [favorite, setFavorite] = useState([]);
+
     const updateFavorite = async (id) => {
         try {
             await axios.post(`http://localhost:3306/drugs/${id}`);
