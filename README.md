@@ -6,3 +6,4 @@
 3. create DB(MySQL) "drug-stores", create table "shops, drugs"
 4. drugs - 'id, store_name, drug_name, price, img, favorites'
 5. shops - 'id, name, link'
+6. run "server.js"
