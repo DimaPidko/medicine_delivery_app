@@ -2,18 +2,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Navigation from '../navigation/Navigation';
 import Shops from './Shops/Shops';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 import styles from './Shop.module.sass';
 import ShowCase from './ShowCase/ShowCase';
 
 const Shop = (props) => {
-    const [selectedShop, setSelectedShop] = useState('drugs24');
-
-    const onChangeShop = (shopId) => {
-        setSelectedShop(shopId);
-    };
-
     return (
         <>
             <Navigation />
@@ -21,11 +15,11 @@ const Shop = (props) => {
                 <nav>
                     <Shops
                         shops={props.shops}
-                        onChangeShop={onChangeShop}
+                        onChangeShop={props.onChangeShop}
                     />
                 </nav>
                 <main>
-                    <ShowCase selectedShop={selectedShop} />
+                    <ShowCase selectedShop={props.selectedShop} />
                 </main>
             </div>
         </>

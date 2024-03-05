@@ -12,16 +12,16 @@ function App() {
         setSelectedShop(shopId);
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:3306/shops');
-                setShops(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3306/shops');
+            setShops(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
