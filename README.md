@@ -8,3 +8,5 @@
 5. shops - 'id, name, link'
 
 6. start server [npm run server]
+
+7. start app [yarn dev]
