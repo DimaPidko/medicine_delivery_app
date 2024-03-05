@@ -85,7 +85,6 @@ app.post('/drugs/:id', (req, res) => {
             return;
         }
 
-        // Получение текущего значения favorites
         connection.query(
             `SELECT favorites FROM drugs WHERE id = ${drugId}`,
             (err, rows) => {
@@ -95,11 +94,8 @@ app.post('/drugs/:id', (req, res) => {
                     res.status(500).send('Internal Server Error');
                     return;
                 }
-
-                // Обновление значения favorites на противоположное
                 const newFavoriteValue = rows[0].favorites === 1 ? 0 : 1;
 
-                // Обновление записи в базе данных
                 const updateQuery = `UPDATE drugs SET favorites = ${newFavoriteValue} WHERE id = ${drugId}`;
 
                 connection.query(updateQuery, (err, result) => {

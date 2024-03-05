@@ -1,35 +1,37 @@
+import styles from './UserInfo.module.sass';
+
 const UserInfo = () => {
     return (
-        <div>
-            <div>
+        <form className={styles.form}>
+            <div className={styles.form__body}>
                 <label htmlFor="name">Name</label>
                 <input
                     id="name"
                     type="text"
                 />
             </div>
-            <div>
+            <div className={styles.form__body}>
                 <label htmlFor="email">Email</label>
                 <input
                     id="email"
                     type="email"
                 />
             </div>
-            <div>
+            <div className={styles.form__body}>
                 <label htmlFor="phone">Phone</label>
                 <input
                     id="phone"
                     type="tel"
                 />
             </div>
-            <div>
+            <div className={styles.form__body}>
                 <label htmlFor="address">Address</label>
                 <input
                     id="address"
                     type="text"
                 />
             </div>
-        </div>
+        </form>
     );
 };
 
